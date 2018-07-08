@@ -39,22 +39,22 @@ def iterator(node, final, queue)
   iterator(queue.pop, final, queue)
 end
 
+def display(answer)
+  array = []
+  until answer.parent == nil
+    array.push(answer.pos)
+    answer = answer.parent
+  end
+  array.push(answer.pos)
+  until array.empty?
+    p array.pop
+  end
+end
+
 def knight_moves(init, final)
   root = Node.new(init)
   queue = Queue.new
-  answer = iterator(root, final, queue)
-  until answer.parent == nil
-    p answer.pos
-    answer = answer.parent
-  end
-  p answer.pos
+  display(iterator(root, final, queue))
 end
 
-def display(node)
-  until node.parent == nil
-    p node.pos
-    node = node.parent
-  end
-end
-
-knight_moves([3,3],[4,3])
+knight_moves([3,3],[4,3]
